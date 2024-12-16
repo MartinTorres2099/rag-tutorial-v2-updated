@@ -17,27 +17,42 @@ With working code I set out to update it with features that I would like to see 
 
 ## Environment
 
-This codeis being run on a Windows 10 machine. The following will outline what you can do to recreate the environment on your machine.
+This code is being run on a Windows 10 machine. The following will outline what you can do to recreate the environment on your machine.
 
 From a DOS prompt, create a directory where your repo's will be stored i.e.
 - CD\ 
 - C:\md gitrepos
 - CD C:\gitrepos
 - Git clone https://github.com/MartinTorres2099/rag-tutorial-v2-updated.git
+
 It creates the following directory:
+
 C:\git\rag-tutorial-v2-updated
+
 - CD C:\git\rag-tutorial-v2-updated
+
 Create python virtual environment:
+
 - python -m venv venv (run only once to create your vistual environment)
+
 To activate your venv on Windows, you need to run a script that gets installed by venv. Create the virtual environment so it will not interfere with the other code you may be running for other applications:
+
 - venv\Scripts\activate.bat
+
 Install requirements:
+
 (venv) C:\gitrepo\rag-tutorial-v2-updated>pip install -r requirements.txt
+
 To deactivate virtual enviornment:
+
 - venv\Scripts\deactivate.bat
-Reboot your machine so all the paths can be updated and your environment setup properl.
+
+Reboot your machine so all the paths can be updated and your environment setup properly.
+
 Upon reboot, activate your virtual environment:
+
 - CD C:\git\rag-tutorial-v2-updated
+
 - venv\Scripts\activate.bat
 
 Modify get_embedding_function.py to run locally:
