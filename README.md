@@ -86,22 +86,29 @@ https://ollama.com/
 ## Manually run program instead of using web interface:
 
 Once installed and Ollama is active in your tray, run the following to pull ollam models:
+
 (venv) C:\git\rag-tutorial-v2>ollama pull mistral (downlaoded but not used)
 
 Specify different mistral model to pull:
+
 (venv) C:\git\rag-tutorial-v2>ollama pull mistral-nemo (downloaded and using)
 
 Serve the downloaded model:
+
 (venv) C:\git\rag-tutorial-v2>ollama serve (need to verify)
 
 To run a downloaded model:
+
 ollama run mistral-nemo
 
 To exit model:
+
 /bye
 
 To add/new documents to the database:
+
 python populate_database.py
 
 To test RAG answers against known information (modify the test_rag.py to test against your data):
+
 pytest -s
