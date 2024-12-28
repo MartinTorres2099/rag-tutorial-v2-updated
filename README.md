@@ -1,110 +1,132 @@
-# rag-tutorial-v2
-This is the extent of the README.md file from the GitHub repo. The following are my notes for the updated README.md file.
+```markdown
+# rag-tutorial-v2 - Updated
 
-# rag-tutorial-v2-updated
-The orignal README.md file from the main repo is blank. I will update this README.md file with the work I have been doing to expand on the original code.
+This repository expands on the original [rag-tutorial-v2](https://github.com/pixegami/rag-tutorial-v2.git) to add more features and improve the performance of the chatbot built with Langchain and a vector database. Below is a guide to set up the environment and run the application.
+
+---
 
 ## Description
-Over a year ago I tried creating a chatbot using langchain and a vector database on my own. I was importing files, parsing them, etc. but I was having issues with the chatbot getting usefull information from the vector DB. Fast forward to a year later and now there are several repos with working implementations that you can use to chat with your documents. I forked a previous repo and was able to get it to run on my machine as it would not run from the main repo. Although this worked for small files (200KB or less), it had issues importing MB size files:
 
-[Web-LLM-Assistant-Llama-cpp-working](https://github.com/MartinTorres2099/Web-LLM-Assistant-Llama-cpp-working/tree/main)
+Over a year ago, I attempted to create a chatbot using Langchain and a vector database. Although I could import files and parse them, I faced challenges getting useful information from the vector DB. Fast forward to today, and many repositories offer working implementations for chatting with documents.
 
-Before I went to deep in troubleshooting why it times out when importing large files I searched online and found this repo with code that worked the first time. It was light on features but it did what it was supposed to do:
+I initially forked and tested a repo ([Web-LLM-Assistant-Llama-cpp-working](https://github.com/MartinTorres2099/Web-LLM-Assistant-Llama-cpp-working/tree/main)) but faced issues with importing larger files (greater than 200KB). After troubleshooting, I found [rag-tutorial-v2](https://github.com/pixegami/rag-tutorial-v2.git), which worked well for smaller documents and served as a base for my updates.
 
-[rag-tutorial-v2]( https://github.com/pixegami/rag-tutorial-v2.git)
+I expanded the project with additional features that I wanted to see. Here's a [video demo of the app in action](https://www.youtube.com/watch?v=2TJxpyO3ei4).
 
-With working code I set out to update it with features that I would like to see it do.
+---
 
-[Youtube video showing the application working]( https://www.youtube.com/watch?v=2TJxpyO3ei4 )
+## Environment Setup
 
-## Environment
+This project is set up to run on a Windows 10 machine. Follow the instructions below to recreate the environment on your machine.
 
-This code is being run on a Windows 10 machine. The following will outline what you can do to recreate the environment on your machine.
+### 1. Clone the Repository
 
-From a DOS prompt, create a directory where your repo's will be stored i.e.
-- CD\ 
-- C:\md gitrepos
-- CD C:\gitrepos
-- Git clone https://github.com/MartinTorres2099/rag-tutorial-v2-updated.git
+First, create a directory to store your repositories and clone the project.
 
-It creates the following directory:
+```bash
+# Navigate to the root directory where your repos will be stored
+cd \
+mkdir gitrepos
+cd gitrepos
 
-C:\gitrepo\rag-tutorial-v2-updated
-
-- CD C:\gitrepo\rag-tutorial-v2-updated
-
-Create python virtual environment:
-
-- python -m venv venv (run only once to create your vistual environment)
-
-To activate your venv on Windows, you need to run a script that gets installed by venv. Create the virtual environment so it will not interfere with the other code you may be running for other applications:
-
-- venv\Scripts\activate.bat
-
-Install requirements:
-
-(venv) C:\gitrepo\rag-tutorial-v2-updated>pip install -r requirements.txt
-
-- Install Flask: If you don't have Flask installed, you can install it via pip:
-  pip install Flask
-
-- pip install langchain-community
-
-
-To deactivate virtual enviornment:
-
-- venv\Scripts\deactivate.bat
-
-Reboot your machine so all the paths can be updated and your environment setup properly.
-
-Upon reboot, activate your virtual environment:
-
-- CD C:\gitrepo\rag-tutorial-v2-updated
-
-- venv\Scripts\activate.bat
-
-Modify get_embedding_function.py to run locally:
+# Clone the repository
+git clone https://github.com/MartinTorres2099/rag-tutorial-v2-updated.git
 ```
+
+The repository will be cloned to:  
+`C:\gitrepos\rag-tutorial-v2-updated`
+
+### 2. Set Up the Python Virtual Environment
+
+Navigate to the project directory and create a Python virtual environment:
+
+```bash
+cd C:\gitrepos\rag-tutorial-v2-updated
+python -m venv venv  # Run only once to create your virtual environment
+```
+
+### 3. Activate the Virtual Environment
+
+To activate the virtual environment on Windows:
+
+```bash
+venv\Scripts\activate.bat
+```
+
+### 4. Install the Required Packages
+
+Install the required dependencies by running:
+
+```bash
+pip install -r requirements.txt
+```
+
+Additionally, install Flask and Langchain:
+
+```bash
+pip install Flask
+pip install langchain-community
+```
+
+### 5. Deactivate the Virtual Environment
+
+Once you are done working, deactivate the virtual environment with:
+
+```bash
+venv\Scripts\deactivate.bat
+```
+
+---
+
+## Modifying the Embedding Function
+
+Update `get_embedding_function.py` to run locally by uncommenting and adjusting the code:
+
+```python
 from langchain_community.embeddings.ollama import OllamaEmbeddings
 from langchain_community.embeddings.bedrock import BedrockEmbeddings
 
 def get_embedding_function():
-    # Code is commented out - uncomment and update to use embeddings from cloud provider
-    # embeddings = BedrockEmbeddings(
-    #     credentials_profile_name="default", region_name="us-east-1"
-    # )
+    # Uncomment and configure to use cloud-based embeddings
+    # embeddings = BedrockEmbeddings(credentials_profile_name="default", region_name="us-east-1")
+    
     embeddings = OllamaEmbeddings(model="nomic-embed-text")
     return embeddings
-
 ```
 
+---
 
-To load different document types, look for code here:
+## Loading Documents
 
-https://python.langchain.com/docs/how_to/#document-loaders
+You can load different document types using Langchain's document loaders. Find more details here:
 
-To load PDF files, look for code here:
+- [General document loaders](https://python.langchain.com/docs/how_to/#document-loaders)
+- [Loading PDF files](https://python.langchain.com/docs/how_to/document_loader_pdf/)
 
-https://python.langchain.com/docs/how_to/document_loader_pdf/
+To install Ollama, follow the instructions on their [official website](https://ollama.com/).
 
-To install Ollama, look for code here:
+---
 
-https://ollama.com/
+## Running the Application
 
-## Running the app from the website
+### Prerequisites
 
-Make sure you start the Ollama application on your machine before starting the app. I created a batch file to launch my application. You can modify it to suite your environment:
+Ensure that the **Ollama** application is running on your machine before starting the app. You can create a batch file to automate the process.
 
-```
+### 1. Create a Batch File to Launch the Application
+
+Create a batch file (`start_app.bat`) with the following content:
+
+```batch
 @echo off
 echo This will launch the RAG application
 timeout /t 2
 
-echo Chagning to rag directory
+echo Changing to rag directory
 cd C:\rag-tutorial-v2
 timeout /t 2
 
-echo Activating python virtual environment
+echo Activating Python virtual environment
 call venv\Scripts\activate.bat
 timeout /t 2
 
@@ -112,7 +134,7 @@ python app.py
 echo Waiting for the app to close...
 timeout /t 2
 
-echo Deactivating python virtual environment
+echo Deactivating Python virtual environment
 call venv\Scripts\deactivate.bat
 timeout /t 2
 
@@ -122,54 +144,89 @@ timeout /t 2
 exit
 ```
 
-Running the Web App:
-- To start the Flask app, simply run the Python script (python your_script.py).
+### 2. Run the Web App
 
-It will start a local development server, which can be accessed by navigating to http://127.0.0.1:5000/ in a web browser.
+Execute the batch file to start the application. The app will run a local development server, accessible at:  
+[http://127.0.0.1:5000/](http://127.0.0.1:5000/)
 
-## Manually run program instead of using web interface:
+---
 
-Make sure to pull the nomic-embed-text into the environment:
+## Running the Program Without the Web Interface
 
+You can also run the program manually without the web interface:
+
+1. **Pull the Nomic embed model:**
+
+```bash
 ollama pull nomic-embed-text
+```
 
-Once installed and Ollama is active in your tray, run the following to pull ollam models:
+2. **Download and use a Mistral model:**
 
-(venv) C:\gitrepo\rag-tutorial-v2>ollama pull mistral (downlaoded but not used)
+```bash
+ollama pull mistral-nemo  # Pull the Mistral model
+```
 
-Specify different mistral model to pull:
+3. **Serve the model:**
 
-(venv) C:\gitrepo\rag-tutorial-v2>ollama pull mistral-nemo (downloaded and using)
+```bash
+ollama serve  # (Verify if needed)
+```
 
-Serve the downloaded model:
+4. **Run the model:**
 
-(venv) C:\gitrepo\rag-tutorial-v2>ollama serve (need to verify)
-
-To run a downloaded model:
-
+```bash
 ollama run mistral-nemo
+```
 
-To exit model:
+5. **Exit the model:**
 
+```bash
 /bye
+```
 
-To add/new documents to the database:
+6. **Add or update documents in the database:**
 
+```bash
 python populate_database.py
+```
 
-To test RAG answers against known information (modify the test_rag.py to test against your data):
+7. **Test the RAG system with known data:**
 
-pytest -s
+Run the following to check how well the LLM answers questions based on the vector DB:
 
-pytest will check the code in test_rag.py. You need to update this file with information you know to be true.
-This way you can check how well your LLM is answering your questions based on the information stored in the vector DB.
+```bash
+pytest -s  # Modify test_rag.py with known data
+```
 
-## Uninstall Python Virtual Environment
+---
 
-From a powershell CMD prompt, make sure your virutal environment is not active:
+## Uninstalling the Python Virtual Environment
 
-- venv\Scripts\deactivate.bat
+To uninstall the virtual environment, first deactivate it:
 
-Run the following Powershell command to remove the python virutal environment:
+```bash
+venv\Scripts\deactivate.bat
+```
 
-- rm -r venv
+Then, delete the virtual environment:
+
+```bash
+rm -r venv
+```
+
+---
+
+## Additional Resources
+
+- [Langchain Documentation](https://python.langchain.com/docs/)
+- [Ollama Website](https://ollama.com/)
+
+---
+
+Thank you for using this project! Feel free to contribute or make improvements.
+
+```
+
+---
+
