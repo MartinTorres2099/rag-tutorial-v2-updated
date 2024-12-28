@@ -4,17 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Query LLM</title>
+    <script>
+        function quitApp() {
+            // Disable the form and quit button
+            document.getElementById('user_choice').disabled = true;
+            document.querySelector('button[type="submit"]').disabled = true;
+            document.querySelector('button[onclick="quitApp()"]').disabled = true;
+
+            // Show a thank you message
+            document.getElementById('message').innerHTML = "Thank you for using the RAG application. It is now properly shut down and you can close this tab.";
+
+            // Optionally, send a request to Flask to trigger any final steps like stopping the server
+            fetch('/quit', { method: 'POST' })
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data);  // Log the response (for debugging purposes)
+                })
+            //     .catch(error => {
+            //         console.error('Error:', error);
+            //         alert('An error occurred while trying to quit.');
+            //     });
+        }
+    </script>
 </head>
 <body>
     <h1>Welcome to the LLM Query Interface</h1>
     <form method="POST">
         <label for="user_choice">Choose what you'd like to do:</label><br>
-        <select id="user_choice" name="user_choice">
+        <select name="user_choice" id="user_choice">
             <option value="search_documents">Search Documents</option>
             <option value="coding_question">Ask Coding Question</option>
             <option value="general_chat">General Chat</option>
         </select><br><br>
         <button type="submit">Submit</button>
     </form>
+
+    <br><br>
+
+    <!-- Quit Button -->
+    <button onclick="quitApp()">Quit Application</button>
+
+    <!-- Thank You Message -->
+    <p id="message"></p>
 </body>
 </html>

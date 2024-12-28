@@ -3,12 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Result</title>
+    <title>Query Result</title>
 </head>
 <body>
-    <h1>Response</h1>
-    <pre>{{ response_text }}</pre>
+    <h1>Results for your query: "{{ query }}" using model "{{ model }}"</h1>
+    
+    <!-- Display the response from the model -->
+    <p><strong>Response:</strong> {{ response_text }}</p>
+    
+    <!-- Display the sources if any are available -->
+    {% if sources %}
+        <p><strong>Sources:</strong></p>
+        <ul>
+        {% for source in sources %}
+            <li>{{ source }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p><strong>No sources available.</strong></p>
+    {% endif %}
+    
     <br>
-    <a href="/">Go back</a>
+    <a href="/">Go back to the main page</a>
 </body>
 </html>
+
