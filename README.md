@@ -224,8 +224,3 @@ rm -r venv
 ---
 
 Thank you for using this project! Feel free to contribute or make improvements.
-
-```
-
----
-
