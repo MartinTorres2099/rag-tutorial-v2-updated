@@ -93,6 +93,35 @@ https://ollama.com/
 
 ## Running the app from the website
 
+Make sure you start the Ollama application on your machine before starting the app. I created a batch file to launch my application. You can modify it to suite your environment:
+
+```
+@echo off
+echo This will launch the RAG application
+timeout /t 2
+
+echo Chagning to rag directory
+cd C:\rag-tutorial-v2
+timeout /t 2
+
+echo Activating python virtual environment
+call venv\Scripts\activate.bat
+timeout /t 2
+
+python app.py
+echo Waiting for the app to close...
+timeout /t 2
+
+echo Deactivating python virtual environment
+call venv\Scripts\deactivate.bat
+timeout /t 2
+
+echo Thank you for using the RAG application, goodbye for now!
+timeout /t 2
+
+exit
+```
+
 Running the Web App:
 - To start the Flask app, simply run the Python script (python your_script.py).
 
