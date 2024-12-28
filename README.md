@@ -1,4 +1,3 @@
-```markdown
 # rag-tutorial-v2 - Updated
 
 This repository expands on the original [rag-tutorial-v2](https://github.com/pixegami/rag-tutorial-v2.git) to add more features and improve the performance of the chatbot built with Langchain and a vector database. Below is a guide to set up the environment and run the application.
@@ -9,7 +8,7 @@ This repository expands on the original [rag-tutorial-v2](https://github.com/pix
 
 Over a year ago, I attempted to create a chatbot using Langchain and a vector database. Although I could import files and parse them, I faced challenges getting useful information from the vector DB. Fast forward to today, and many repositories offer working implementations for chatting with documents.
 
-I initially forked and tested a repo ([Web-LLM-Assistant-Llama-cpp-working](https://github.com/MartinTorres2099/Web-LLM-Assistant-Llama-cpp-working/tree/main)) but faced issues with importing larger files (greater than 200KB). After troubleshooting, I found [rag-tutorial-v2](https://github.com/pixegami/rag-tutorial-v2.git), which worked well for smaller documents and served as a base for my updates.
+I initially forked and tested a repo [Web-LLM-Assistant-Llama-cpp-working](https://github.com/MartinTorres2099/Web-LLM-Assistant-Llama-cpp-working/tree/main) but faced issues with importing larger files (greater than 200KB). After troubleshooting, I found [rag-tutorial-v2](https://github.com/pixegami/rag-tutorial-v2.git), which worked well for smaller documents and served as a base for my updates.
 
 I expanded the project with additional features that I wanted to see. Here's a [video demo of the app in action](https://www.youtube.com/watch?v=2TJxpyO3ei4).
 
