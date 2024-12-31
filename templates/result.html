@@ -8,10 +8,8 @@
 <body>
     <h1>Results for your query: "{{ query }}" using model "{{ model }}"</h1>
     
-    <!-- Display the response from the model -->
     <p><strong>Response:</strong> {{ response_text }}</p>
     
-    <!-- Display the sources if any are available -->
     {% if sources %}
         <p><strong>Sources:</strong></p>
         <ul>
@@ -23,8 +21,10 @@
         <p><strong>No sources available.</strong></p>
     {% endif %}
     
-    <br>
-    <a href="/">Go back to the main page</a>
+    <div style="margin-top: 20px;">
+        <h3>What would you like to do next?</h3>
+        <a href="/ask_another"><button>Ask Another Question</button></a>
+        <a href="/"><button>Choose Different Task</button></a>
+    </div>
 </body>
 </html>
-

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask Question</title>
+</head>
+<body>
+    <h1>Ask your question (using model: {{ model }})</h1>
+   
+    <form action="/ask_question" method="POST">
+        <label for="query_text">Enter your question:</label><br>
+        <input type="text" id="query_text" name="query_text" required><br><br>
+        <button type="submit">Submit</button>
+    </form>
+    
+    <br>
+    <a href="/"><button>Choose Different Task</button></a>
+</body>
+</html>

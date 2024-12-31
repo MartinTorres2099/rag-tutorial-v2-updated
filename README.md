@@ -216,6 +216,10 @@ rm -r venv
 
 ---
 
+## Updates
+
+The code has been updated to allow you to ask a question and once it is answered, you have the option to ask another question with the loaded model or go back to the main index.html and choose a different model to ask a question under. The previous code always asked what model you wanted to use.
+
 ## Additional Resources
 
 - [Langchain Documentation](https://python.langchain.com/docs/)
