@@ -216,9 +216,43 @@ rm -r venv
 
 ---
 
+## Run the application on your local environment
+
+In working with Flask, it would always run with development mode on regardless of how I was launching the application or how I changed variables to run in something other than debug. I installed Waitress and updated app.py to use that instead:
+
+In the virtual environment, install Waitress:
+
+```bash
+
+pip install waitress
+
+```
+Update the app.py code:
+
+```bash
+
+if __name__ == "__main__":
+
+    print("Starting Flask app with Waitress...")
+
+    serve(app, host='0.0.0.0', port=5000)
+
+```
+
+Run the Flask app with Waitress:
+
+```bash
+
+python app.py
+
+```
+
+---
 ## Updates
 
 The code has been updated to allow you to ask a question and once it is answered, you have the option to ask another question with the loaded model or go back to the main index.html and choose a different model to ask a question under. The previous code always asked what model you wanted to use.
+
+The app has now been updated so that the machine it is running under can be accessed from any other machines in the environment by inpoutting the IP address of the machine it is running under. I changed the port to 8080 and I am using Waitress to serve up the site. The next step is to ask if an answer cannot be found in the documents, should the app search online for an answer.
 
 ## Additional Resources
 

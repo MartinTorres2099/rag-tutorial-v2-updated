@@ -139,6 +139,7 @@ def general_chat():
                          sources=[],
                          model=model_name)
 
-# Run the Flask app
+# Run the Waitress app
 if __name__ == "__main__":
-    app.run(debug=True)
+    print("Starting Flask app with Waitress...")
+    serve(app, host='0.0.0.0', port=5000)
